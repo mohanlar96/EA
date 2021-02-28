@@ -7,51 +7,52 @@ package com.miu.edu.learnea.model;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import com.miu.edu.learnea.model.Employee;
-import java.util.ArrayList;
-import javax.persistence.Cacheable;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
 /**
  *
  * @author Mohan
  */
 @Entity
-@Cacheable(false)
-public class Department implements Serializable {
+public class Project implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    public Department(String name, List<Employee> employee){
+    public Project(){
+        
+    }
+    public Project(String name,List<Bug> bugs ){
         this.name=name;
-        this.employees=employee;
+        this.bugs=bugs;
         
     }
-    public Department(){
-        
-    }   
-    @OneToMany(cascade=CascadeType.ALL)
-    @JoinColumn(name="department_id")
-    private List<Employee> employees=new ArrayList<>();        
-  
+    
     private String name;
+    
+    @ManyToMany
+//    @JoinTable(
+//     joinColumns = @JoinColumn(name = "proj_id"),
+//     inverseJoinColumns = @JoinColumn(name = "emp_id")
+//    )
+    private List<Bug> bugs;
 
-    public List<Employee> getEmployees() {
-        return employees;
+    public List<Bug> getBugs() {
+        return bugs;
     }
 
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
-    }
+    public void setBugs(List<Bug> bugs) {
+        this.bugs = bugs;
+    }  
+   
 
     public String getName() {
         return name;
@@ -60,6 +61,7 @@ public class Department implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+    
 
     public Long getId() {
         return id;
@@ -79,10 +81,10 @@ public class Department implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Department)) {
+        if (!(object instanceof Project)) {
             return false;
         }
-        Department other = (Department) object;
+        Project other = (Project) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -91,9 +93,7 @@ public class Department implements Serializable {
 
     @Override
     public String toString() {
-        return "Department{" + "id=" + id + ", employees=" + employees+ ", name=" + name + '}';
+        return "com.miu.edu.learnea.model.Project[ id=" + id + " ]";
     }
-
-    
     
 }

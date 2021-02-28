@@ -6,6 +6,8 @@
     <class>com.miu.edu.learnea.model.Address</class>
     <class>com.miu.edu.learnea.model.Car</class>
     <class>com.miu.edu.learnea.model.Department</class>
+    <class>com.miu.edu.learnea.model.Project</class>
+    <class>com.miu.edu.learnea.model.Bug</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/learning_ea?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
