@@ -15,11 +15,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import com.miu.edu.learnea.model.Employee;
+import java.util.ArrayList;
+import javax.persistence.Cacheable;
+import javax.persistence.JoinColumn;
 /**
  *
  * @author Mohan
  */
 @Entity
+@Cacheable(false)
 public class Department implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -35,8 +39,9 @@ public class Department implements Serializable {
     public Department(){
         
     }   
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER , mappedBy="department")   
-    private List<Employee> employees;        
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="department_id")
+    private List<Employee> employees=new ArrayList<>();        
   
     private String name;
 
@@ -88,7 +93,7 @@ public class Department implements Serializable {
 
     @Override
     public String toString() {
-        return "Department{" + "id=" + id + ", employees=" + employees + ", name=" + name + '}';
+        return "Department{" + "id=" + id + ", employees=" + employees+ ", name=" + name + '}';
     }
 
     

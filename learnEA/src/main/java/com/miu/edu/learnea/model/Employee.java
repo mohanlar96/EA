@@ -5,6 +5,7 @@
  */
 package com.miu.edu.learnea.model;
 import java.io.Serializable;
+import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Cacheable;
 
 
 /**
@@ -21,6 +23,8 @@ import javax.persistence.ManyToOne;
  * @author Mohan
  */
 @Entity
+@Cacheable(false)
+
 public class Employee implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -33,8 +37,7 @@ public class Employee implements Serializable {
     @JoinColumn(name = "address_id")
     private Address address;  
     
-    @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="department_id")
+    @ManyToOne(fetch=FetchType.LAZY)
     private Department department;
     
     

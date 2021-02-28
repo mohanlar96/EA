@@ -42,28 +42,30 @@ public class Main {
         //--- ONE TO ONE END
         
         List<Employee> empList= new ArrayList<Employee>();
-//        
+//       
         empList.add(new Employee("Mohan",new Address("Fairfield")));
         empList.add(new Employee("Arjun",new Address("Fairfield")));
         empList.add(new Employee("Rajeev",new Address("Fairfield")));        
-        
+//        
 //        
         Department d=new Department("English",empList);
-
         em.persist(d);
 
+//        USING JPQL
 
-//           Query q=em.createQuery("SELECT d.employees FROM Department d");
-//           System.out.println("employee" +q.getResultList());
-           
-           
+//           Query q=em.createQuery("SELECT d FROM Department d ");
+//           System.out.println("department list are " +q.getResultList());
 
-
-        
+//       END USING JPSQ       
 
         tx.commit();
+        
+        Department dep=em.find(Department.class, 1l);
+        System.out.println("department list "+dep);
         em.close();
-        emf.close();        
+        emf.close();  
+        
+        
         
         System.out.println("Ending.....");
         
