@@ -15,6 +15,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 /**
  *
  * @author Mohan
@@ -41,14 +42,21 @@ public class Main {
         //--- ONE TO ONE END
         
         List<Employee> empList= new ArrayList<Employee>();
-        
+//        
         empList.add(new Employee("Mohan",new Address("Fairfield")));
         empList.add(new Employee("Arjun",new Address("Fairfield")));
         empList.add(new Employee("Rajeev",new Address("Fairfield")));        
         
-        
+//        
         Department d=new Department("English",empList);
+
         em.persist(d);
+
+
+//           Query q=em.createQuery("SELECT d.employees FROM Department d");
+//           System.out.println("employee" +q.getResultList());
+           
+           
 
 
         

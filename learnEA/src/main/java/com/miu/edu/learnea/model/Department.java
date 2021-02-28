@@ -35,7 +35,7 @@ public class Department implements Serializable {
     public Department(){
         
     }   
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)   
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER , mappedBy="department")   
     private List<Employee> employees;        
   
     private String name;
@@ -88,7 +88,9 @@ public class Department implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Department[ id=" + id + " ]";
+        return "Department{" + "id=" + id + ", employees=" + employees + ", name=" + name + '}';
     }
+
+    
     
 }

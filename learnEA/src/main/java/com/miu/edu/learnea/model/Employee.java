@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.miu.edu.learnea.model;
-
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -31,7 +31,11 @@ public class Employee implements Serializable {
           
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
-    private Address address;   
+    private Address address;  
+    
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="department_id")
+    private Department department;
     
     
    
@@ -91,7 +95,9 @@ public class Employee implements Serializable {
 
     @Override
     public String toString() {
-        return "com.miu.edu.learnea.model.Employee[ id=" + id + " ]";
+        return "Employee{" + "id=" + id + ", name=" + name + ", address=" + address + ", department=" + department + '}';
     }
+
+   
     
 }
