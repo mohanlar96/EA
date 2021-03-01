@@ -3,33 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.mid.cs544;
+package inheritic.single;
 
 import java.io.Serializable;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 /**
  *
- * @author mohan
+ * @author Mohan
  */
 @Entity
-public class Student implements Serializable {
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name="P_TYPE")
+public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -39,17 +37,24 @@ public class Student implements Serializable {
         this.name = name;
     }
 
-    public float getGpa() {
-        return gpa;
+    public int getAge() {
+        return age;
     }
 
-    public void setGpa(float gpa) {
-        this.gpa = gpa;
+    public void setAge(int age) {
+        this.age = age;
     }
     private String name;
-    private float gpa;
-     
-    
+    private int age;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -60,10 +65,10 @@ public class Student implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Student)) {
+        if (!(object instanceof Person)) {
             return false;
         }
-        Student other = (Student) object;
+        Person other = (Person) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -72,11 +77,9 @@ public class Student implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.mid.cs544.Student[ id=" + id + " ]";
+        return "Person{" + "id=" + id + ", name=" + name + ", age=" + age + '}';
     }
 
-    void setId(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
     
 }

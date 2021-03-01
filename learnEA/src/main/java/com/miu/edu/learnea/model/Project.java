@@ -30,9 +30,8 @@ public class Project implements Serializable {
     public Project(){
         
     }
-    public Project(String name,List<Bug> bugs ){
+    public Project(String name ){
         this.name=name;
-        this.bugs=bugs;
         
     }
     

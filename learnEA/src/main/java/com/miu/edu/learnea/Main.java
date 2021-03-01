@@ -56,7 +56,13 @@ public class Main {
 //           Query q=em.createQuery("SELECT d FROM Department d ");
 //           System.out.println("department list are " +q.getResultList());
 
-//       END USING JPSQ       
+//       END USING JPSQ 
+
+          List<Bug> bugList= new ArrayList<Bug>();
+          
+          
+
+        
 
         tx.commit();
         

@@ -48,9 +48,7 @@ public class Bug implements Serializable {
     }
     
     
-    
-    public Bug(String name,List<Project> projects){
-        this.projects=projects;
+    public Bug(String name){
         this.name=name;
         
     }
