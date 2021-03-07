@@ -33,7 +33,7 @@ public class Main {
         Student s= new Student();
         s.setCourses("MPP");
         s.setGpa(2.0F);
-        s.setName("ARJUN BRO");
+        s.setName("mohan BRO");
         s.setAge(21);
         
         

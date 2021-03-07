@@ -36,7 +36,7 @@ public class Main {
          //--- ONE TO ONE START 
          
 //        Address a =new Address("Fairfield");
-//        Employee e= new Employee("ARJUN",a);
+//        Employee e= new Employee("mohan",a);
 //        em.persist(e);
 
         //--- ONE TO ONE END
@@ -44,7 +44,7 @@ public class Main {
         List<Employee> empList= new ArrayList<Employee>();
 //       
         empList.add(new Employee("Mohan",new Address("Fairfield")));
-        empList.add(new Employee("Arjun",new Address("Fairfield")));
+        empList.add(new Employee("mohan",new Address("Fairfield")));
         empList.add(new Employee("Rajeev",new Address("Fairfield")));        
 //        
 //        
