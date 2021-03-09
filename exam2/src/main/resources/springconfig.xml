@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:task="http://www.springframework.org/schema/task"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/task
+http://www.springframework.org/schema/task/spring-task-4.0.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd 
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+    <aop:aspectj-autoproxy />
+     <!--bean definitions here--> 
+    <context:annotation-config/>
+    <bean id="studentPersiter" class="miu.mohan.exam2.entities.persister.StudentPersister" scope="prototype"  />
+    <bean id="studentService" class="miu.mohan.exam2.service.StudentService"/>
+    <bean id="coursePersiter" class="miu.mohan.exam2.entities.persister.CoursePersister" scope="prototype"  />
+    <bean id="courseService" class="miu.mohan.exam2.service.CourseService"/>    
+    <bean id="theTraceAdvice" class="miu.mohan.exam2.advice.TraceAdvice"/>
+    
+    <bean id="scheduleDB" class="miu.mohan.exam2.ScheduleDB" />
+
+    <task:annotation-driven scheduler="myScheduler" />    
+    <task:scheduler id="myScheduler" pool-size="10" />
+    
+ 
+
+
+</beans>
