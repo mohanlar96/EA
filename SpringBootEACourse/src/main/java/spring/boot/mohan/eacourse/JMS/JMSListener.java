@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.miu.cs544.springboot.jsm.myFirstJMSDemo.jms;
+package spring.boot.mohan.eacourse.JMS;
 
-import edu.miu.cs544.springboot.jsm.myFirstJMSDemo.entities.Student;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
+import spring.boot.mohan.eacourse.entities.Student;
 
 /**
  *
- * @author 611517
+ * @author Mohan
  */
 @Component
-public class StudentReciver {
+public class JMSListener {
     
     @JmsListener(destination="studentQueue")
-    public void receiveMessage(String student){
-        System.out.println("Message received "+student);
+    public void receiveMessage(Student student){
+        System.out.println("Message received  "+student);
     }
     
 }

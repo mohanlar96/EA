@@ -3,19 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.miu.cs544.springboot.jsm.myFirstJMSDemo.entities;
+package spring.boot.mohan.eacourse.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 /**
  *
- * @author 611517
+ * @author Mohan
  */
 @Entity
+@NamedQuery(name="Student.findByName",query="select s from Student s where s.name= ?1 ")
 public class Student implements Serializable {
 
     @Id
@@ -31,9 +33,7 @@ public class Student implements Serializable {
 
     public void setAge(Integer age) {
         this.age = age;
-    }
-    
-    
+    }    
 
     public String getName() {
         return name;
@@ -51,8 +51,6 @@ public class Student implements Serializable {
         this.gpa = gpa;
     }
     
-    
-
     public Long getId() {
         return id;
     }

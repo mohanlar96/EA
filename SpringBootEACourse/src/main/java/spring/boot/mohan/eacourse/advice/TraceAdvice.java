@@ -1,4 +1,4 @@
-package miu.mohan.exam2.advice;
+package spring.boot.mohan.eacourse.advice;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;

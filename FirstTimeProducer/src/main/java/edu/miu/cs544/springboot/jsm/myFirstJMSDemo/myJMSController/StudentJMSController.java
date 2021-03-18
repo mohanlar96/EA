@@ -20,12 +20,11 @@ public class StudentJMSController {
     @Autowired
     private JmsTemplate jmsTemplate;
     
-    @PostMapping
+    @PostMapping("/student/")
     public void sendMsg(@RequestBody Student student){
    
-        System.out.println("Post student is "+student);
-        jmsTemplate.convertAndSend("StudentQueue",student);
-        System.out.println("working");
+        System.out.println("Post student is ");
+        jmsTemplate.convertAndSend("studentQueue",student);
         
     }
 }

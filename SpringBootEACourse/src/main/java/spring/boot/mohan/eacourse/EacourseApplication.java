@@ -1,4 +1,4 @@
-package edu.miu.cs544.springboot.jsm.myFirstJMSDemo;
+package spring.boot.mohan.eacourse;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,15 +7,23 @@ import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
-@SpringBootApplication
+
+@SpringBootApplication(scanBasePackages="spring.boot.mohan.eacourse")
 @EnableJms
-public class MyFirstJmsDemoApplication {
+//@EnableScheduling
+public class EacourseApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MyFirstJmsDemoApplication.class, args);
-	}
-        
+            
+            System.out.println("START >>>>>>>>>>>>>>>>>>>>>>  ");
+            
+		SpringApplication.run(EacourseApplication.class, args);
+            
+            System.out.println("END   >>>>>>>>>>>>>>>>>>>>>>   ");
+            
+	}        
         @Bean 
         public MessageConverter jacksonJmsMessageConverter(){
             MappingJackson2MessageConverter converter=new MappingJackson2MessageConverter();
@@ -23,5 +31,4 @@ public class MyFirstJmsDemoApplication {
             converter.setTypeIdPropertyName("myArjun");
             return converter;           
         }
-
 }
