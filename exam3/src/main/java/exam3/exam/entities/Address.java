@@ -16,9 +16,8 @@ import javax.persistence.Id;
  * @author 611517
  */
 @Entity
-public class Address implements Serializable {
+public class Address implements Serializable{
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -72,7 +71,9 @@ public class Address implements Serializable {
 
     @Override
     public String toString() {
-        return "exam3.exam.entities.Address[ id=" + id + " ]";
+        return "Address{" + "id=" + id + ", city=" + city + ", state=" + state + '}';
     }
+
+    
     
 }

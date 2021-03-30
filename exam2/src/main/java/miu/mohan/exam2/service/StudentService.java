@@ -8,16 +8,16 @@ package miu.mohan.exam2.service;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import miu.mohan.exam2.entities.Student;
 import miu.mohan.exam2.entities.persister.StudentPersister;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author mohan
  */
+@Service
 public class StudentService {
 
   

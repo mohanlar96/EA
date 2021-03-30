@@ -5,6 +5,7 @@
  */
 package exam3.exam.service;
 
+import exam3.exam.entities.Address;
 import exam3.exam.entities.Book;
 import exam3.exam.reposisty.BookRepository;
 import java.util.List;
@@ -19,41 +20,45 @@ import org.springframework.stereotype.Service;
 public class BookService {
     
     @Autowired
-    private BookRepository authRepo;
+    private BookRepository boRepo;
     
     
     public List<Book> findAll() {
         
-        return authRepo.findAll();
+        return boRepo.findAll();
         
     }
 
     public void addBook(Book bk) {
         
-        authRepo.save(bk);
+        boRepo.save(bk);
     }    
     public Book replaceBook(Book bk, Long id) {
-        return authRepo.findById(id)
+        return boRepo.findById(id)
             .map(b -> {
               b.setTitle(bk.getTitle());
-              b.setNumberOfPage(bk.getNumberOfPage());
-              return authRepo.save(b);
+              b.setNumberOfPages(bk.getNumberOfPages());
+              return boRepo.save(b);
             }).get();
     }
 
     public Book editBook(Book bk, Long id) {
-        return authRepo.findById(id)
+        return boRepo.findById(id)
             .map(b -> {
                 if(bk.getTitle()!= null)
                     b.setTitle(bk.getTitle());
-                if(bk.getNumberOfPage()!=null)                   
-                    b.setNumberOfPage(bk.getNumberOfPage());
+                if(bk.getNumberOfPages()!=0)                   
+                    b.setNumberOfPages(bk.getNumberOfPages());
                
-              return authRepo.save(b);
+              return boRepo.save(b);
             }).get();         
     }
     public void deleteBook(Long id) {
-        authRepo.deleteById(id);
+        boRepo.deleteById(id);
         
     }    
+
+    public Book getABook(Long id) {
+        return boRepo.findById(id).get();
+    }
 }

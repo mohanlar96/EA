@@ -7,29 +7,32 @@ package exam3.exam.entities;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 /**
  *
  * @author 611517
  */
 @Entity
-public class Receipt implements Serializable {
+public class Receipt implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
     
-    private LocalDateTime date;
+    private Date date;
     private Double amount;
-
-    public LocalDateTime getDate() {
+    @Temporal(TemporalType.DATE)
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

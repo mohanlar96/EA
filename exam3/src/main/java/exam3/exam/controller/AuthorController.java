@@ -36,9 +36,15 @@ public class AuthorController {
         return  authService.findAll();
     }
     
+    @GetMapping(path="/{id}", produces="application/json")
+    public Author allAddress(@PathVariable Long id){        
+        return  authService.getAnAuthor(id);
+    }
+    
     @PostMapping(path="/", consumes="application/json", produces="application/json")
     public ResponseEntity<Author> addAuthor(@RequestBody Author author){
-        System.out.println("POST METHOD TRIGGER");
+        
+        System.out.println("POST METHOD TRIGGER"+author);
        authService.addAuthor(author);
        return ResponseEntity.status(201).build();        
     }
@@ -47,7 +53,7 @@ public class AuthorController {
     public ResponseEntity<Author> replaceAuthor(@PathVariable Long id,@RequestBody Author author){ 
         System.out.println("Put trigger and id is "+id);
        Author updatedAuthor=authService.replaceAuthor(author,id);
-       return ResponseEntity.status(201).build();
+       return ResponseEntity.status(204).build();
     }
     
     @PatchMapping(path="/{id}", consumes="application/json", produces="application/json")
@@ -55,7 +61,7 @@ public class AuthorController {
                 System.out.println("Patch trigger and id is "+id);
 
        Author updatedAuthor=authService.editAuthor(author,id);
-       return ResponseEntity.status(201).build();    
+       return ResponseEntity.status(204).build();    
     }
     
    @DeleteMapping(path="/{id}",  produces="application/json")

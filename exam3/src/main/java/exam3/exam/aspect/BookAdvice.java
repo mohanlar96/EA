@@ -12,6 +12,8 @@ public class BookAdvice {
   @After("execution(* exam3.exam.controller.BookController.*(..))")  
   
   public void tracebeforemethod(JoinPoint joinpoint){
+      
+     Object[] args = joinpoint.getArgs();
        
         System.out.println("Book OPeration Perform with Method = "+joinpoint.getSignature().getName());
         

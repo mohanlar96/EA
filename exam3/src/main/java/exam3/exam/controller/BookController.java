@@ -5,6 +5,7 @@
  */
 package exam3.exam.controller;
 
+import exam3.exam.entities.Address;
 import exam3.exam.entities.Book;
 import exam3.exam.service.BookService;
 import java.util.List;
@@ -36,6 +37,11 @@ public class BookController {
         return  bookService.findAll();
     }
     
+    @GetMapping(path="/{id}", produces="application/json")
+    public Book  allAddress(@PathVariable Long id){        
+        return  bookService.getABook(id);
+    }
+    
     @PostMapping(path="/", consumes="application/json", produces="application/json")
     public ResponseEntity<Book> addBook(@RequestBody Book student){
         System.out.println("POST METHOD TRIGGER");
@@ -47,7 +53,7 @@ public class BookController {
     public ResponseEntity<Book> replaceBook(@PathVariable Long id,@RequestBody Book student){ 
         System.out.println("Put trigger and id is "+id);
        Book updatedBook=bookService.replaceBook(student,id);
-       return ResponseEntity.status(201).build();
+       return ResponseEntity.status(204).build();
     }
     
     @PatchMapping(path="/{id}", consumes="application/json", produces="application/json")
@@ -55,7 +61,7 @@ public class BookController {
                 System.out.println("Patch trigger and id is "+id);
 
        Book updatedBook=bookService.editBook(student,id);
-       return ResponseEntity.status(201).build();    
+       return ResponseEntity.status(204).build();    
     }
     
    @DeleteMapping(path="/{id}",  produces="application/json")

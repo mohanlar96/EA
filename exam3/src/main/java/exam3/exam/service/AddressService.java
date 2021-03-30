@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
  * @address Mohan
  */
 @Service
-public class AddressService {
+public class AddressService  {
     
     @Autowired
     private AddressRepository authRepo;
@@ -56,4 +56,8 @@ public class AddressService {
         authRepo.deleteById(id);
         
     }    
+
+    public Address getAnAddress(Long id) {
+        return authRepo.findById(id).get();
+    }
 }

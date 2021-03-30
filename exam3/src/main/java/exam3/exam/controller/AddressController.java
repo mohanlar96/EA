@@ -36,6 +36,10 @@ public class AddressController {
     public List<Address> allAddress(){        
         return  addService.findAll();
     }
+    @GetMapping(path="/{id}", produces="application/json")
+    public Address allAddress(@PathVariable Long id){        
+        return  addService.getAnAddress(id);
+    }
     
     @PostMapping(path="/", consumes="application/json", produces="application/json")
     public ResponseEntity<Address> addAddress(@RequestBody Address student){
@@ -48,7 +52,7 @@ public class AddressController {
     public ResponseEntity<Address> replaceAddress(@PathVariable Long id,@RequestBody Address student){ 
         System.out.println("Put trigger and id is "+id);
        Address updatedAddress=addService.replaceAddress(student,id);
-       return ResponseEntity.status(201).build();
+       return ResponseEntity.status(204).build();
     }
     
     @PatchMapping(path="/{id}", consumes="application/json", produces="application/json")
@@ -56,7 +60,7 @@ public class AddressController {
                 System.out.println("Patch trigger and id is "+id);
 
        Address updatedAddress=addService.editAddress(student,id);
-       return ResponseEntity.status(201).build();    
+       return ResponseEntity.status(204).build();    
     }
     
    @DeleteMapping(path="/{id}",  produces="application/json")

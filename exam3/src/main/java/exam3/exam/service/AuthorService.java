@@ -35,7 +35,7 @@ public class AuthorService {
         return authRepo.findById(id)
             .map(auth -> {
               auth.setAddress(author.getAddress());
-              auth.setBook(author.getBook());
+              auth.setBooks(author.getBooks());
               auth.setName(author.getName());
               auth.setExperience(author.getExperience());
               return authRepo.save(auth);
@@ -51,8 +51,8 @@ public class AuthorService {
                     auth.setExperience(author.getExperience());
                  if(author.getAddress()!= null)
                     auth.setAddress(author.getAddress());
-                if(author.getBook()!=null)                   
-                    auth.setBook(author.getBook());
+                if(author.getBooks()!=null)                   
+                    auth.setBooks(author.getBooks());
                
               return authRepo.save(auth);
             }).get();         
@@ -61,4 +61,8 @@ public class AuthorService {
         authRepo.deleteById(id);
         
     }    
+
+    public Author getAnAuthor(Long id) {
+        return authRepo.findById(id).get();
+    }
 }

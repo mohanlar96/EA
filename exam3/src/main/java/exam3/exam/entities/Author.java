@@ -20,9 +20,8 @@ import javax.persistence.OneToOne;
  * @author 611517
  */
 @Entity
-public class Author implements Serializable {
+public class Author  implements Serializable{
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -30,9 +29,19 @@ public class Author implements Serializable {
     private Integer experience;
     @OneToOne(cascade=CascadeType.ALL)
     private Address address;
-
+    
     @OneToMany(cascade=CascadeType.ALL)
     private List<Book> books;
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+    
+     
 
     public Address getAddress() {
         return address;
@@ -40,15 +49,7 @@ public class Author implements Serializable {
 
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public List<Book> getBook() {
-        return books;
-    }
-
-    public void setBook(List<Book> books) {
-        this.books = books;
-    }   
+    }    
 
     public String getName() {
         return name;
@@ -98,8 +99,12 @@ public class Author implements Serializable {
 
     @Override
     public String toString() {
-        return "exam3.exam.entities.Author[ id=" + id + " ]";
+        return "Author{" + "id=" + id + ", name=" + name + ", experience=" + experience + ", address=" + address + ", books=" + books + '}';
     }
+
+   
+
+    
 
   
     

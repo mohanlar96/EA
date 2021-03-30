@@ -3,8 +3,8 @@ package exam3.exam;
 import exam3.exam.entities.*;
 import exam3.exam.service.AuthorService;
 import exam3.exam.service.ReceiptService;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -35,10 +35,10 @@ public class ExamApplication {
                 
                 Book b=new Book();
                 b.setTitle("Java Hello world");
-                b.setNumberOfPage(100);
+                b.setNumberOfPages(100);
                 List<Book> bookLists=new ArrayList<Book>();
                 bookLists.add(b);
-                a1.setBook(bookLists);
+                a1.setBooks(bookLists);
                 Address iowa=new Address();
                 iowa.setCity("Fairfield");
                 iowa.setState("Iowa");
@@ -51,7 +51,7 @@ public class ExamApplication {
                 System.out.println("Receive is created current time");
                 Receipt receipt= new Receipt();
                 receipt.setId(1l);
-                receipt.setDate(LocalDateTime.now());
+                receipt.setDate(new Date());
                 receipt.setAmount(10.00);
                 context.getBean(ReceiptService.class).createReceipt(receipt);
               
